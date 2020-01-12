@@ -1,14 +1,17 @@
 import React from "react"
-import { Favorite } from "@material-ui/icons"
-import { BottomFooter } from "./styles"
+import { BottomFooter, FooterContainer, HeartIcon } from "./styles"
 
 const Footer = () => {
   return (
     <BottomFooter>
-      &copy; {1900 + new Date().getYear()} , made with <Favorite />
-      <a href="https://www.linkedin.com/in/ernestorr/" target="_blank">
-        Ernesto Ramirez
-      </a>
+      <FooterContainer>
+        <div className="createdBy">
+          &copy; {1900 + new Date().getYear()} , made with <HeartIcon /> by{" "}
+          <a href="https://www.linkedin.com/in/ernestorr/" target="_blank">
+            Ernesto Ramirez
+          </a>
+        </div>
+      </FooterContainer>
     </BottomFooter>
   )
 }
