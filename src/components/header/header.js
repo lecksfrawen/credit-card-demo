@@ -3,9 +3,11 @@ import PropTypes from "prop-types"
 import { AppBar, Toolbar, Typography } from "@material-ui/core"
 import { Link } from "gatsby"
 
+import { AppBarTransparent, ToolbarMediaQuery } from "./styles"
+
 const Header = ({ siteTitle }) => (
-  <AppBar position="static">
-    <Toolbar>
+  <AppBarTransparent position="static">
+    <ToolbarMediaQuery>
       <Typography
         variant="h6"
         component={Link}
@@ -17,8 +19,8 @@ const Header = ({ siteTitle }) => (
       >
         {siteTitle}
       </Typography>
-    </Toolbar>
-  </AppBar>
+    </ToolbarMediaQuery>
+  </AppBarTransparent>
 )
 
 Header.propTypes = {
