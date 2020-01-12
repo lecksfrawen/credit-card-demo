@@ -11,7 +11,7 @@ import { CssBaseline } from "@material-ui/core"
 import { ThemeProvider } from "@material-ui/core/styles"
 
 import { GlobalStyle } from "./styles"
-import theme from "../../theme"
+import theme from "theme"
 import Header from "components/header"
 import Footer from "components/Footer"
 
