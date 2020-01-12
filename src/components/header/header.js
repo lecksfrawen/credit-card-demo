@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { AppBar, Toolbar, Typography } from "@material-ui/core/"
+import { AppBar, Toolbar, Typography } from "@material-ui/core"
 import { Link } from "gatsby"
 
 const Header = ({ siteTitle }) => (
