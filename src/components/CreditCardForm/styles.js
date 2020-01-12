@@ -1,6 +1,14 @@
 import styled from "styled-components"
+import CreditCards from "react-credit-cards"
+import { Card, CardContent } from "@material-ui/core"
 
-import { Card, CardContent, TextField } from "@material-ui/core"
+export const StyledCreditCard = styled(CreditCards)`
+  margin-bottom: 140px;
+`
+
+export const MaterialCardStyled = styled(Card)`
+  padding-top: 125px;
+`
 
 export const CardContentStyled = styled(CardContent)`
   display: flex;
