@@ -7,6 +7,11 @@ export const AppBarTransparent = styled(AppBar)`
   box-shadow: none;
   padding: 0.625rem 0;
   margin-bottom: 20px;
+
+  position: absolute;
+  top: 0;
+  background-color: transparent;
+  color: white;
 `
 
 export const ToolbarMediaQuery = styled(Toolbar)`
