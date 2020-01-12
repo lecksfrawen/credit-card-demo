@@ -13,7 +13,7 @@ import { ThemeProvider } from "@material-ui/core/styles"
 import theme, { GlobalStyle } from "theme"
 import Header from "components/Header"
 import Footer from "components/Footer"
-import { BackgroundContainer } from "./styles"
+import { BackgroundContainer, MainContainer } from "./styles"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
         }}
       > */}
       <BackgroundContainer>
-        <main>{children}</main>
+        <MainContainer>{children}</MainContainer>
         <Footer />
       </BackgroundContainer>
     </ThemeProvider>

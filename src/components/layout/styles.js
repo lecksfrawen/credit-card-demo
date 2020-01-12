@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import bg from "./bg7.jpg"
+import { MediaQueryContainerCss } from "theme"
 
 export const BackgroundContainer = styled.div`
   position: relative;
@@ -12,12 +13,18 @@ export const BackgroundContainer = styled.div`
   background-image: url(${bg});
   background-size: cover;
   background-position: center top;
+`
 
-  /* backgroundImage: url(" + image + "), */
-  /* backgroundSize: "cover", */
-  /* backgroundPosition: "top center" */
+export const MainContainer = styled.main`
+  ${MediaQueryContainerCss}
 
-  > main {
-    padding-top: 20vh;
-  }
+  color: #ffffff;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  position: relative;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20vh 15px 200px 15px;
 `

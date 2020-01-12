@@ -9,6 +9,7 @@ export const BottomFooter = styled.footer`
   width: 100%;
   padding: 1rem 0;
   display: flex;
+  color: white;
 `
 
 export const FooterContainer = styled.div`
