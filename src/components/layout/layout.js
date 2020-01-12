@@ -9,10 +9,11 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { CssBaseline } from "@material-ui/core"
 import { ThemeProvider } from "@material-ui/core/styles"
-import theme from "../../theme"
 
+import { GlobalStyle } from "./styles"
+import theme from "../../theme"
 import Header from "components/header"
-import "./layout.css"
+import Footer from "components/Footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,22 +29,19 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
+      {/* <div
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
+          //   margin: `0 auto`,
+          //   maxWidth: 960,
+          //   padding: `0px 1.0875rem 1.45rem`,
+          height: "100vh",
         }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      > */}
+      <main>{children}</main>
+      <Footer />
+      {/* </div> */}
     </ThemeProvider>
   )
 }

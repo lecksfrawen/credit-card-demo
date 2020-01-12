@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.8.3",
+    "@material-ui/icons": "^4.5.1",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.31",
@@ -13,13 +14,15 @@
     "gatsby-plugin-offline": "^3.0.27",
     "gatsby-plugin-react-helmet-async": "^1.0.14",
     "gatsby-plugin-sharp": "^2.3.5",
+    "gatsby-plugin-styled-components": "^3.1.17",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-sharp": "^2.3.7",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet-async": "^1.0.4"
+    "react-helmet-async": "^1.0.4",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.13.0",
@@ -31,13 +34,13 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf public && gatsby build",
+    "build": "npm run clean && gatsby build",
     "build:serve": "npm run build && npx http-server public",
+    "clean": "gatsby clean",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "start": "npm run develop",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
