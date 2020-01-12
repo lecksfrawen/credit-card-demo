@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { AppBar, Toolbar, Typography } from "@material-ui/core"
+import { Typography } from "@material-ui/core"
 import { Link } from "gatsby"
 
 import { AppBarTransparent, ToolbarMediaQuery } from "./styles"

@@ -11,7 +11,7 @@ import { CssBaseline } from "@material-ui/core"
 import { ThemeProvider } from "@material-ui/core/styles"
 
 import theme, { GlobalStyle } from "theme"
-import Header from "components/header"
+import Header from "components/Header"
 import Footer from "components/Footer"
 
 const Layout = ({ children }) => {
