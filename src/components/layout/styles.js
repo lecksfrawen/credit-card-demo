@@ -16,7 +16,7 @@ export const BackgroundContainer = styled.div`
 `
 
 export const MainContainer = styled.main`
-  ${MediaQueryContainerCss}
+  /* ${MediaQueryContainerCss} */
 
   color: #ffffff;
   width: 100%;

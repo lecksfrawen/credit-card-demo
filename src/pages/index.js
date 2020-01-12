@@ -9,7 +9,7 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Grid container justify="center">
-      <Grid item xs={12} sm={10} md={8}>
+      <Grid item xs={12} sm={6} md={6}>
         <CreditCardFormCard />
       </Grid>
     </Grid>
