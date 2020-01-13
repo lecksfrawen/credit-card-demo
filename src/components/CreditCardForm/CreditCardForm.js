@@ -12,7 +12,6 @@ import {
   formatCreditCardNumber,
   formatCVC,
   formatExpirationDate,
-  formatFormData,
 } from "./utils"
 
 const CreditCardForm = () => {
@@ -49,16 +48,20 @@ const CreditCardForm = () => {
 
   return (
     <>
-      <CreditCards
+      <div
         style={{
           marginBottom: -125,
         }}
-        cvc={cardState.cvc}
-        expiry={cardState.expiry}
-        focused={focus}
-        name={cardState.name}
-        number={cardState.number}
-      />
+      >
+        <CreditCards
+          cvc={cardState.cvc}
+          expiry={cardState.expiry}
+          focused={focus}
+          name={cardState.name}
+          number={cardState.number}
+          preview={true}
+        />
+      </div>
       <MaterialCardStyled>
         <CardContentStyled>
           <TextField

@@ -10,6 +10,7 @@ export const BottomFooter = styled.footer`
   padding: 1rem 0;
   display: flex;
   color: white;
+  z-index: 10;
 `
 
 export const FooterContainer = styled.div`

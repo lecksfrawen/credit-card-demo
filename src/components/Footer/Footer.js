@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "@material-ui/core"
 import { BottomFooter, FooterContainer, HeartIcon } from "./styles"
 
 const Footer = () => {
@@ -7,13 +8,13 @@ const Footer = () => {
       <FooterContainer>
         <div className="createdBy">
           &copy; {1900 + new Date().getYear()} , made with <HeartIcon /> by{" "}
-          <a
+          <Link
             href="https://www.linkedin.com/in/ernestorr/"
             target="_blank"
             rel="noopener noreferrer"
           >
             Ernesto Ramirez
-          </a>
+          </Link>
         </div>
       </FooterContainer>
     </BottomFooter>
