@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import CreditCards from "react-credit-cards"
+import { Form, Field } from "react-final-form"
 import { Button, CardActions, TextField } from "@material-ui/core"
 import "react-credit-cards/es/styles-compiled.css"
 
@@ -15,109 +16,144 @@ import {
 } from "./utils"
 
 const CreditCardForm = () => {
-  const [cardState, setCardState] = useState({
-    cvc: "",
-    expiry: "",
-    name: "",
-    number: "",
-  })
   const [focus, setFocus] = useState("")
-
-  const handleInputChange = e => {
-    let { name, value } = e.target
-
-    if (name === "number") {
-      value = formatCreditCardNumber(value)
-    }
-    if (name === "expiry") {
-      value = formatExpirationDate(value)
-    }
-    if (name === "cvc") {
-      value = formatCVC(value)
-    }
-
-    setCardState({
-      ...cardState,
-      [name]: value,
-    })
-  }
 
   const handleFocus = e => {
     setFocus(e.target.name)
   }
 
+  const onSubmit = data => {
+    console.log(data)
+  }
+
   return (
-    <>
-      <div
-        style={{
-          marginBottom: -125,
-        }}
-      >
-        <CreditCards
-          cvc={cardState.cvc}
-          expiry={cardState.expiry}
-          focused={focus}
-          name={cardState.name}
-          number={cardState.number}
-          preview={true}
-        />
-      </div>
-      <MaterialCardStyled>
-        <CardContentStyled>
-          <TextField
-            label="Card Number"
-            variant="outlined"
-            name="number"
-            onChange={handleInputChange}
-            onFocus={handleFocus}
-            value={cardState.number}
-            InputLabelProps={{
-              shrink: true,
+    <Form
+      onSubmit={onSubmit}
+      initialValues={{
+        cvc: "",
+        expiry: "",
+        name: "",
+        number: "",
+      }}
+      render={({ handleSubmit, form, submitting, pristine, values }) => (
+        <form onSubmit={handleSubmit}>
+          <div
+            style={{
+              marginBottom: -125,
             }}
-          />
-          <TextField
-            label="Card Holder"
-            variant="outlined"
-            name="name"
-            onChange={handleInputChange}
-            onFocus={handleFocus}
-            value={cardState.name}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <DateCVVContainer>
-            <TextField
-              label="Expires"
-              variant="outlined"
-              name="expiry"
-              onChange={handleInputChange}
-              onFocus={handleFocus}
-              value={cardState.expiry}
-              InputLabelProps={{
-                shrink: true,
-              }}
+          >
+            <CreditCards
+              cvc={values.cvc}
+              expiry={values.expiry}
+              name={values.name}
+              number={values.number}
+              focused={focus}
             />
-            <TextField
-              label="CVV"
-              variant="outlined"
-              name="cvc"
-              onChange={handleInputChange}
-              onFocus={handleFocus}
-              value={cardState.cvc}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </DateCVVContainer>
-        </CardContentStyled>
-        <CardActions>
-          <Button fullWidth variant="contained" color="primary">
-            Submit
-          </Button>
-        </CardActions>
-      </MaterialCardStyled>
-    </>
+          </div>
+          <MaterialCardStyled>
+            <CardContentStyled>
+              <Field
+                // base
+                name="number"
+                // f-f
+                parse={value => value && formatCreditCardNumber(value)}
+                format={value => (value ? formatCreditCardNumber(value) : "")}
+                render={fieldProps => {
+                  const { input } = fieldProps
+
+                  return (
+                    <TextField
+                      {...input}
+                      label="Card Number"
+                      placeholder="Card Number"
+                      variant="outlined"
+                      onFocus={handleFocus}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  )
+                }}
+              />
+              <Field
+                // base
+                name="name"
+                // f-f
+                render={fieldProps => {
+                  const { input } = fieldProps
+
+                  return (
+                    <TextField
+                      {...input}
+                      label="Card Holder"
+                      variant="outlined"
+                      onFocus={handleFocus}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  )
+                }}
+              />
+              <DateCVVContainer>
+                <Field
+                  // base
+                  name="expiry"
+                  // f-f
+                  parse={value => value && formatExpirationDate(value)}
+                  format={value => (value ? formatExpirationDate(value) : "")}
+                  render={fieldProps => {
+                    const { input } = fieldProps
+                    return (
+                      <TextField
+                        {...input}
+                        label="Expires"
+                        variant="outlined"
+                        onFocus={handleFocus}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                      />
+                    )
+                  }}
+                />
+                <Field
+                  // base
+                  name="cvc"
+                  // f-f
+                  parse={value => value && formatCVC(value)}
+                  format={value => (value ? formatCVC(value) : "")}
+                  render={fieldProps => {
+                    const { input } = fieldProps
+                    return (
+                      <TextField
+                        {...input}
+                        label="CVV"
+                        variant="outlined"
+                        onFocus={handleFocus}
+                        InputLabelProps={{
+                          shrink: true,
+                        }}
+                      />
+                    )
+                  }}
+                />
+              </DateCVVContainer>
+            </CardContentStyled>
+            <CardActions>
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                type="submit"
+              >
+                Submit
+              </Button>
+            </CardActions>
+          </MaterialCardStyled>
+        </form>
+      )}
+    />
   )
 }
 
