@@ -8,7 +8,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { CssBaseline } from "@material-ui/core"
-import { ThemeProvider } from "@material-ui/core/styles"
+import { ThemeProvider } from "styled-components"
+import { ThemeProvider as MUIThemeProvider } from "@material-ui/core/styles"
 
 import theme, { GlobalStyle } from "theme"
 import Header from "components/Header"
@@ -27,15 +28,17 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <GlobalStyle />
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <BackgroundContainer>
-        <MainContainer>{children}</MainContainer>
-        <Footer />
-      </BackgroundContainer>
-    </ThemeProvider>
+    <MUIThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <GlobalStyle />
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <BackgroundContainer>
+          <MainContainer>{children}</MainContainer>
+          <Footer />
+        </BackgroundContainer>
+      </ThemeProvider>
+    </MUIThemeProvider>
   )
 }
 

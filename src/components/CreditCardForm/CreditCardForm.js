@@ -24,15 +24,12 @@ const initialValues = {
   cvc: "",
 }
 
-const CreditCardForm = () => {
+const CreditCardForm = props => {
+  const { onSubmit } = props
   const [focus, setFocus] = useState("")
 
   const handleFocus = e => {
     setFocus(e.target.name)
-  }
-
-  const onSubmit = data => {
-    console.log(data)
   }
 
   return (

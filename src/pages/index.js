@@ -3,14 +3,14 @@ import { Grid } from "@material-ui/core"
 
 import Layout from "components/layout"
 import SEO from "components/SEO"
-import CreditCardFormCard from "components/CreditCardForm"
+import CreditCardApiDemo from "../containers/CreditCardApiDemo"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Grid container justify="center">
       <Grid item xs={12} sm={6} md={6}>
-        <CreditCardFormCard />
+        <CreditCardApiDemo />
       </Grid>
     </Grid>
   </Layout>
