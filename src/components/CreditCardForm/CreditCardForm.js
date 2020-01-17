@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { func } from "prop-types"
 import { Form, Field } from "react-final-form"
 import { Button, CardActions, TextField } from "@material-ui/core"
 import CreditCards from "react-credit-cards"
@@ -180,6 +181,10 @@ const CreditCardForm = props => {
       )}
     />
   )
+}
+
+CreditCardForm.propTypes = {
+  onSubmit: func.isRequired,
 }
 
 export default CreditCardForm
