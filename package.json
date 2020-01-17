@@ -29,12 +29,15 @@
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
-    "babel-plugin-import": "^1.13.0",
+    "babel-jest": "^24.9.0",
     "babel-preset-gatsby": "^0.2.27",
     "eslint": "^6.8.0",
     "eslint-config-react-app": "^5.1.0",
     "eslint-plugin-react": "^7.18.0",
-    "prettier": "^1.19.1"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.12.0"
   },
   "keywords": [
     "gatsby"
@@ -48,7 +51,7 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "serve": "gatsby serve",
     "start": "npm run develop",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "test": "jest",
     "lint": "eslint src"
   },
   "repository": {

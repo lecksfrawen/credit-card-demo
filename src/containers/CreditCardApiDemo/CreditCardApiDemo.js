@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { Modal, Paper } from "@material-ui/core"
+import Modal from "@material-ui/core/Modal"
+import Paper from "@material-ui/core/Paper"
 import styled from "styled-components"
 
 import CreditCardForm from "components/CreditCardForm"

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Favorite } from "@material-ui/icons"
+import Favorite from "@material-ui/icons/Favorite"
 
 import { MediaQueryContainerCss } from "theme"
 

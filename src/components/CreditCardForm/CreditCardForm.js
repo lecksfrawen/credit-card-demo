@@ -1,7 +1,9 @@
 import React, { useState } from "react"
 import { func } from "prop-types"
 import { Form, Field } from "react-final-form"
-import { Button, CardActions, TextField } from "@material-ui/core"
+import Button from "@material-ui/core/Button"
+import CardActions from "@material-ui/core/CardActions"
+import TextField from "@material-ui/core/TextField"
 import CreditCards from "react-credit-cards"
 import "react-credit-cards/es/styles-compiled.css"
 

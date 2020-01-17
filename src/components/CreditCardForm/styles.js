@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import CreditCards from "react-credit-cards"
-import { Card, CardContent } from "@material-ui/core"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
 
 export const StyledCreditCard = styled(CreditCards)`
   margin-bottom: 140px;
