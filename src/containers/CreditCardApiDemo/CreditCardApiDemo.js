@@ -23,11 +23,10 @@ const CreditCardApiDemo = () => {
     setShowModal(true)
   }
 
-  const handleSubmit = (values, form) => {
-    // saveCreditCardInfo.then(() => {
-    //   openModal()
-    // })
-  }
+  const handleSubmit = values =>
+    saveCreditCardInfo().then(() => {
+      openModal()
+    })
 
   return (
     <>

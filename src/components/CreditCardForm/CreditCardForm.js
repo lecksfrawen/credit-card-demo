@@ -32,9 +32,16 @@ const CreditCardForm = props => {
     setFocus(e.target.name)
   }
 
+  const handleSubmit = (values, form) => {
+    onSubmit(values).then(() => {
+      setFocus("")
+      form.reset()
+    })
+  }
+
   return (
     <Form
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       validate={validateCreditCardFormValues}
       initialValues={initialValues}
       render={({ handleSubmit, submitting, values }) => (
