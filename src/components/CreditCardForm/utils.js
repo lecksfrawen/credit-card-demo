@@ -59,6 +59,43 @@ export function formatExpirationDate(value) {
   return clearValue
 }
 
-export function formatFormData(data) {
-  return Object.keys(data).map(d => `${d}: ${data[d]}`)
+export function shouldShowError(meta) {
+  return (
+    ((meta.submitError && !meta.dirtySinceLastSubmit) || meta.error) &&
+    meta.touched
+  )
+}
+
+export function validateCreditCardFormValues(values) {
+  const { number, name, expiry = "", cvc } = values
+  const errors = {}
+
+  // Credit card number
+  if (!number) {
+    errors.number = "Required"
+  } else if (!Payment.fns.validateCardNumber(number)) {
+    errors.number = "Invalid Credit Card Number"
+  }
+
+  // Name
+  if (!name) {
+    errors.name = "Required"
+  }
+
+  // expiry
+  const [month, year] = expiry.split("/")
+  if (!expiry) {
+    errors.expiry = "Required"
+  } else if (!Payment.fns.validateCardExpiry(month, year)) {
+    errors.expiry = "Invalid Card Expiry"
+  }
+
+  // CVV
+  if (!cvc) {
+    errors.cvc = "Required"
+  } else if (!Payment.fns.validateCardCVC(cvc)) {
+    errors.cvc = "Invalid Verification Code"
+  }
+
+  return errors
 }

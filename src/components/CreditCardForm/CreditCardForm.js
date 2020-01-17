@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import CreditCards from "react-credit-cards"
 import { Form, Field } from "react-final-form"
 import { Button, CardActions, TextField } from "@material-ui/core"
+import CreditCards from "react-credit-cards"
 import "react-credit-cards/es/styles-compiled.css"
 
 import {
@@ -13,7 +13,16 @@ import {
   formatCreditCardNumber,
   formatCVC,
   formatExpirationDate,
+  shouldShowError,
+  validateCreditCardFormValues,
 } from "./utils"
+
+const initialValues = {
+  name: "",
+  number: "",
+  expiry: "",
+  cvc: "",
+}
 
 const CreditCardForm = () => {
   const [focus, setFocus] = useState("")
@@ -29,13 +38,9 @@ const CreditCardForm = () => {
   return (
     <Form
       onSubmit={onSubmit}
-      initialValues={{
-        cvc: "",
-        expiry: "",
-        name: "",
-        number: "",
-      }}
-      render={({ handleSubmit, form, submitting, pristine, values }) => (
+      validate={validateCreditCardFormValues}
+      initialValues={initialValues}
+      render={({ handleSubmit, submitting, values }) => (
         <form onSubmit={handleSubmit}>
           <div
             style={{
@@ -43,11 +48,11 @@ const CreditCardForm = () => {
             }}
           >
             <CreditCards
-              cvc={values.cvc}
-              expiry={values.expiry}
-              name={values.name}
-              number={values.number}
-              focused={focus}
+              cvc={values.cvc || ""}
+              expiry={values.expiry || ""}
+              name={values.name || ""}
+              number={values.number || ""}
+              focused={focus || ""}
             />
           </div>
           <MaterialCardStyled>
@@ -59,15 +64,19 @@ const CreditCardForm = () => {
                 parse={value => value && formatCreditCardNumber(value)}
                 format={value => (value ? formatCreditCardNumber(value) : "")}
                 render={fieldProps => {
-                  const { input } = fieldProps
+                  const { input, meta } = fieldProps
+                  const error = shouldShowError(meta)
 
                   return (
                     <TextField
                       {...input}
+                      required
                       label="Card Number"
                       placeholder="Card Number"
                       variant="outlined"
                       onFocus={handleFocus}
+                      helperText={error ? meta.error : " "}
+                      error={error}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -80,14 +89,18 @@ const CreditCardForm = () => {
                 name="name"
                 // f-f
                 render={fieldProps => {
-                  const { input } = fieldProps
+                  const { input, meta } = fieldProps
+                  const error = shouldShowError(meta)
 
                   return (
                     <TextField
                       {...input}
+                      required
                       label="Card Holder"
                       variant="outlined"
                       onFocus={handleFocus}
+                      helperText={error ? meta.error : " "}
+                      error={error}
                       InputLabelProps={{
                         shrink: true,
                       }}
@@ -103,13 +116,17 @@ const CreditCardForm = () => {
                   parse={value => value && formatExpirationDate(value)}
                   format={value => (value ? formatExpirationDate(value) : "")}
                   render={fieldProps => {
-                    const { input } = fieldProps
+                    const { input, meta } = fieldProps
+                    const error = shouldShowError(meta)
                     return (
                       <TextField
                         {...input}
+                        required
                         label="Expires"
                         variant="outlined"
                         onFocus={handleFocus}
+                        helperText={error ? meta.error : " "}
+                        error={error}
                         InputLabelProps={{
                           shrink: true,
                         }}
@@ -124,13 +141,16 @@ const CreditCardForm = () => {
                   parse={value => value && formatCVC(value)}
                   format={value => (value ? formatCVC(value) : "")}
                   render={fieldProps => {
-                    const { input } = fieldProps
+                    const { input, meta } = fieldProps
+                    const error = shouldShowError(meta)
                     return (
                       <TextField
                         {...input}
                         label="CVV"
                         variant="outlined"
                         onFocus={handleFocus}
+                        helperText={error ? meta.error : " "}
+                        error={error}
                         InputLabelProps={{
                           shrink: true,
                         }}
@@ -146,6 +166,7 @@ const CreditCardForm = () => {
                 variant="contained"
                 color="primary"
                 type="submit"
+                disabled={submitting}
               >
                 Submit
               </Button>
